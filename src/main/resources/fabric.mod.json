@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "digging_counter",
+  "version": "${version}",
+  "name": "digging counter",
+  "description": "a mod which can count the number player dig",
+  "authors": [],
+  "contact": {},
+  "license": "GPL-3.0",
+  "icon": "assets/digging_counter/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "mod.missdrop.client.Digging_counterClient"
+    ],
+    "main": [
+      "mod.missdrop.Digging_counter"
+    ]
+  },
+  "mixins": [
+    "digging_counter.mixins.json",
+    {
+      "config": "digging_counter.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
