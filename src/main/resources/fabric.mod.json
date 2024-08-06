@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "id": "digging_counter",
-  "version": "${version}",
+  "version": "beta 0.1",
   "name": "digging counter",
   "description": "a mod which can count the number player dig",
   "authors": [],
   "contact": {},
   "license": "GPL-3.0",
-  "icon": "assets/digging_counter/icon.png",
+  "icon": "assets/digging_counter/icon.jpg",
   "environment": "*",
   "entrypoints": {
     "client": [
@@ -25,8 +25,8 @@
     }
   ],
   "depends": {
-    "fabricloader": ">=${loader_version}",
+    "fabricloader": ">=0.16.0",
     "fabric": "*",
-    "minecraft": "${minecraft_version}"
+    "minecraft": "1.21"
   }
 }
