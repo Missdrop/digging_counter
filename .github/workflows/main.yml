@@ -2,9 +2,9 @@ name: 发布到 Github
  
 on:
   push:
-    branches:
-    - main
-    - release/*
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 env:
   MINECRAFT_VERSION: 1.21
