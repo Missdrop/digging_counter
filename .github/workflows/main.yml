@@ -1,4 +1,4 @@
-name: 发布到 Github、Curseforge 和 Modrinth    
+name: 发布到 Github 
  
 on: [ pull_request, workflow_dispatch ]
 
