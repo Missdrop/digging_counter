@@ -1,6 +1,10 @@
 name: 发布到 Github 
  
-on: [ pull_request, workflow_dispatch ]
+on:
+  push:
+    branches:
+    - main
+    - release/*
 
 env:
   MINECRAFT_VERSION: 1.21
@@ -39,7 +43,7 @@ jobs:
       - name: 发布Github
         uses: Kir-Antipov/mc-publish@v3.3.0                             
         with:
-          github-token: "${{secret.GITHUB_TOKEN}}"
+          github-token: "${{env.GITHUB_TOKEN}}"
 
           name: "${{env.RELEASE_NAME}}"                             
           version: "${{env.VERSION}}"
