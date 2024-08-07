@@ -1,0 +1,52 @@
+name: 发布到 Github、Curseforge 和 Modrinth    
+ 
+on: [ pull_request, workflow_dispatch ]
+
+env:
+  MINECRAFT_VERSION: 1.21
+  JAVA_VERSION: 21
+  VERSION: 1.21
+  GITHUB_TOKEN: ${{ secrets.PUBLISH_GITHUB_TOKEN }}           
+
+permissions:
+  contents: write
+
+jobs:                                             
+  build:                                          
+    runs-on: ubuntu-latest                        
+    steps:                                        
+      - name: 检查环境变量
+        run: env
+
+      - name: 签出存储库
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: 设置 Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: "temurin"
+          java-version: 21
+
+      - name: 使 Gradle Wrapper 可执行
+        if: ${{ runner.os != 'Windows' }}
+        run: chmod +x ./gradlew
+
+      - name: 构建
+        run: ./gradlew clean build
+      
+      - name: 发布Github
+        uses: Kir-Antipov/mc-publish@v3.3.0                             
+        with:
+          github-tag: "v${{env.VERSION}}"
+          github-token: "${{env.GITHUB_TOKEN}}"
+
+          name: "${{env.RELEASE_NAME}}"                             
+          version: "${{env.VERSION}}"
+          version-type: release                          
+
+          loaders: fabric
+          game-versions: "${{env.MINECRAFT_VERSION}}"
+          java: "${{env.JAVA_VERSION}}"
+          
