@@ -39,7 +39,6 @@ jobs:
       - name: 发布Github
         uses: Kir-Antipov/mc-publish@v3.3.0                             
         with:
-          github-tag: "v${{env.VERSION}}"
           github-token: "${{env.GITHUB_TOKEN}}"
 
           name: "${{env.RELEASE_NAME}}"                             
